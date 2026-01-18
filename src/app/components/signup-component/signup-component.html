@@ -1,1 +1,48 @@
-<p>signup-component works!</p>
+<section class="login-section">
+  <div class="container d-flex justify-content-center">
+    <form class="form-container d-flex flex-column gap-3 p-5 shadow-lg" novalidate>
+      <div class="text-center mb-3">
+        <h2>Sign Up</h2>
+      </div>
+
+      <div>
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control px-3"
+          id="username"
+          placeholder="Enter your name"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="username" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control px-3"
+          id="email"
+          placeholder="Enter your email"
+          required
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control px-3"
+          id="password"
+          placeholder="Enter your password"
+          required
+        >
+      </div>
+
+      <button class="btn btn-primary fw-bold" type="submit">LOGIN</button>
+
+      <div class="text-center mt-3">
+        <small>You Have Account? <a href="#" class="text-decoration-none" style="color: #8a2be2;">Login</a></small>
+      </div>
+    </form>
+  </div>
+</section>

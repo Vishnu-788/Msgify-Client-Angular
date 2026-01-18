@@ -1,0 +1,39 @@
+@import "../../scss-variables/colors";
+
+.login-section {
+  background-color: $primary-white; // The light purple tint
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  width: 100%;
+  max-width: 450px;
+}
+
+.btn-primary {
+  background-color: $primary-main;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+
+h2 {
+  color: $primary-dark;
+  font-weight: 800;
+}
+
+.form-label {
+  color: $primary-dark;
+  font-weight: 500;
+}
