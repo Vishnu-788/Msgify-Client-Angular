@@ -1,7 +1,7 @@
-@import "../../scss-variables/colors";
+@use "../../scss-variables/colors";
 
-.login-section {
-  background-color: $primary-white; // The light purple tint
+.signup-section {
+  background-color: colors.$primary-white; // The light purple tint
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -17,23 +17,33 @@
 }
 
 .btn-primary {
-  background-color: $primary-main;
+  background-color: colors.$primary-main;
   border: none;
   border-radius: 2rem;
   padding: 0.8rem;
   transition: background 0.3s ease;
 
   &:hover {
-    background-color: $primary-dark;
+    background-color: colors.$primary-dark;
   }
 }
 
 h2 {
-  color: $primary-dark;
+  color: colors.$primary-dark;
   font-weight: 800;
 }
 
 .form-label {
-  color: $primary-dark;
+  color: colors.$primary-dark;
   font-weight: 500;
+}
+
+.icon-warning {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  -webkit-mask: url('/icons/x-circle.svg') no-repeat center;
+  mask: url('/icons/x-circle.svg') no-repeat center;
+  background-color: red;
+  vertical-align: middle;
 }

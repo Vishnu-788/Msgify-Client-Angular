@@ -1,47 +1,110 @@
-<section class="login-section">
+<section class="signup-section">
   <div class="container d-flex justify-content-center">
-    <form class="form-container d-flex flex-column gap-3 p-5 shadow-lg" novalidate>
+    <form
+      class="form-container d-flex flex-column gap-3 p-5 shadow-lg"
+      [formGroup]="signupForm"
+      (ngSubmit)="onSubmit()"
+      novalidate>
       <div class="text-center mb-3">
         <h2>Sign Up</h2>
       </div>
 
       <div>
         <label for="username" class="form-label">Username</label>
+        @if (signupForm.get('username')?.touched && signupForm.get('username')?.errors) {
+          <div class="text-danger">
+            @if(signupForm.get('username')?.hasError('required')){
+              <small>
+                <span class="icon-warning"></span>
+                Username is required!
+              </small>
+            } @else if (signupForm.get('username')?.hasError('minlength')){
+              <small>
+                <span class="icon-warning"></span>
+                Username should at least be 6 characters long.
+              </small>
+            } @else {
+              <small>
+                <span class="icon-warning"></span>
+                Username should only contain characters, numbers and underscores.
+              </small>
+            }
+          </div>
+        }
         <input
           type="text"
           class="form-control px-3"
           id="username"
           placeholder="Enter your name"
+          formControlName="username"
           required
         >
       </div>
 
       <div>
-        <label for="username" class="form-label">Email</label>
+        <label for="email" class="form-label">Email</label>
+        @if(signupForm.get('email')?.touched && signupForm.get('email')?.errors){
+          <div class="text-danger">
+            @if(signupForm.get('email')?.hasError('required')){
+              <small>
+                <span class="icon-warning"></span>
+                Email is required!
+              </small>
+            } @else {
+              <small>
+                <span class="icon-warning"></span>
+                Please provide a valid email format.
+              </small>
+            }
+          </div>
+        }
         <input
           type="email"
           class="form-control px-3"
           id="email"
           placeholder="Enter your email"
+          formControlName="email"
           required
         >
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
+        @if(signupForm.get('password')?.touched && signupForm.get('password')?.errors){
+          <div class="text-danger">
+            @if(signupForm.get('password')?.hasError('required')){
+              <small>
+                <span class="icon-warning"></span>
+                Password is required!
+              </small>
+            } @else {
+              <small>
+                <span class="icon-warning"></span>
+                Password should at least contain 6 characters.
+              </small>
+            }
+          </div>
+        }
         <input
           type="password"
           class="form-control px-3"
           id="password"
           placeholder="Enter your password"
+          formControlName="password"
           required
         >
       </div>
 
-      <button class="btn btn-primary fw-bold" type="submit">LOGIN</button>
+      <button
+        class="btn btn-primary fw-bold"
+        type="submit"
+        [disabled]="signupForm.invalid"
+      >
+        LOGIN
+      </button>
 
       <div class="text-center mt-3">
-        <small>You Have Account? <a href="#" class="text-decoration-none" style="color: #8a2be2;">Login</a></small>
+        <small>You Have Account? <a routerLink="/auth/login" class="text-decoration-none" style="color: #8a2be2;">Login</a></small>
       </div>
     </form>
   </div>

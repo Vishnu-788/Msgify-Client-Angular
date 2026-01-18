@@ -1,28 +1,70 @@
 <section class="login-section">
   <div class="container d-flex justify-content-center">
-    <form class="form-container d-flex flex-column gap-3 p-5 shadow-lg" novalidate>
+    <form
+      class="form-container d-flex flex-column gap-3 p-5 shadow-lg"
+      [formGroup]="loginForm"
+      (ngSubmit)="handleLogin()"
+      novalidate
+    >
       <div class="text-center mb-3">
         <h2>Login</h2>
       </div>
 
       <div>
+        @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors) {
+          <div class="text-danger border border-1 border-danger border-opacity-50 rounded p-2">
+            @if (loginForm.get('username')?.hasError('required')) {
+              <small>
+                <span class="icon-warning"></span>
+                Username is required!
+              </small>
+            } @else if (loginForm.get('username')?.hasError('minlength')) {
+              <small>
+                <span class="icon-warning"></span>
+                Username should at least be 6 characters long.
+              </small>
+            } @else {
+              <small>
+                <span class="icon-warning"></span>
+                Username should only contain characters, numbers and underscores.
+              </small>
+            }
+          </div>
+        }
         <label for="username" class="form-label">Username</label>
         <input
           type="text"
           class="form-control px-3"
           id="username"
           placeholder="Enter your name"
+          formControlName="username"
           required
         >
       </div>
 
       <div class="mb-3">
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.errors) {
+          <div class="text-danger border border-1 border-danger border-opacity-50 rounded p-2">
+            @if (loginForm.get('password')?.hasError('required')) {
+              <small>
+                <span class="icon-warning"></span>
+                Password is required!
+              </small>
+            } @else {
+              <small>
+                <span class="icon-warning"></span>
+                Password should at least contain 6 characters.
+              </small>
+            }
+          </div>
+        }
         <label for="password" class="form-label">Password</label>
         <input
           type="password"
           class="form-control px-3"
           id="password"
           placeholder="Enter your password"
+          formControlName="password"
           required
         >
       </div>
@@ -30,7 +72,8 @@
       <button class="btn btn-primary fw-bold" type="submit">LOGIN</button>
 
       <div class="text-center mt-3">
-        <small>You Don't Have Account? <a href="#" class="text-decoration-none" style="color: #8a2be2;">Sign Up</a></small>
+        <small>You Don't Have Account? <a routerLink="/auth/signup" class="text-decoration-none" style="color: #8a2be2;">Sign
+          Up</a></small>
       </div>
     </form>
   </div>
