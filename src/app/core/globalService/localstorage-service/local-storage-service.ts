@@ -7,4 +7,11 @@ export class LocalStorageService {
   setItem(key: string, value: string) {
     localStorage.setItem(key, value)
   }
+  removeItem(key: string) {
+    localStorage.removeItem(key);
+  }
+
+  resetStorage() {
+    localStorage.clear();
+  }
 }

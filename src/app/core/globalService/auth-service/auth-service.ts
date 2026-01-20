@@ -9,6 +9,7 @@ import {AuthSuccessDto} from '../../models/AuthSuccessDto';
 export class AuthService {
   private stateService: StateService;
   private localStorageService: LocalStorageService;
+
   constructor(stateService : StateService, localStorageService : LocalStorageService) {
     this.stateService = stateService;
     this.localStorageService = localStorageService;
@@ -23,5 +24,9 @@ export class AuthService {
     this.stateService.setToken(userData.token);
     // After updating the state store the data in the browser localstorage.
     this.setLocalStorageData(userData);
+  }
+
+  removeGlobalUserState() {
+    this.localStorageService.resetStorage();
   }
 }
