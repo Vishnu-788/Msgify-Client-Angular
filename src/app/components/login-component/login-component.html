@@ -9,8 +9,13 @@
       <div class="text-center mb-3">
         <h2>Login</h2>
       </div>
-
+      @if (errorMessage()) {
+        <div class="text-danger border border-1 border-danger border-opacity-50 rounded p-2">
+          {{errorMessage()}}
+        </div>
+      }
       <div>
+        <!--Client side validation errors.-->
         @if (loginForm.get('username')?.touched && loginForm.get('username')?.errors) {
           <div class="text-danger border border-1 border-danger border-opacity-50 rounded p-2">
             @if (loginForm.get('username')?.hasError('required')) {
