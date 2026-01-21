@@ -4,12 +4,14 @@ import {HomeComponent} from './components/home-component/home-component';
 import {AuthLayout} from './layouts/auth-layout/auth-layout';
 import {SignupComponent} from './components/signup-component/signup-component';
 import {LoginComponent} from './components/login-component/login-component';
+import {authGuard} from './core/guards/auth/auth-guard';
 
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayout,
+    canActivate: [authGuard],
     children:[
       { path: '', component: HomeComponent, title: 'Msgify | Home' }
     ]
