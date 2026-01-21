@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {SignupService} from './signup-service';
 
 @Component({
   selector: 'app-signup-component',
@@ -12,7 +13,10 @@ import {RouterLink} from '@angular/router';
   styleUrl: './signup-component.scss',
 })
 export class SignupComponent {
-  signupForm: FormGroup;
+  private signupService: SignupService = inject(SignupService);
+  private router: Router = inject(Router);
+  protected signupForm: FormGroup;
+  protected error = signal<string | null>(null);
 
   constructor() {
     this.signupForm = new FormGroup({
@@ -24,12 +28,15 @@ export class SignupComponent {
     });
   }
 
-  onSubmit = () => {
-    if(this.signupForm.invalid){
-      console.log("Invalid form.")
-    } else {
-      this.signupForm.reset();
+  onSubmit = async () => {
+    this.error.set(null);
+    if(this.signupForm.valid) {
+      const response = await this.signupService.performSignUp(this.signupForm.value);
+      if(response.success){
+        await this.router.navigateByUrl('/');
+      } else {
+        this.error.set(response.message);
+      }
     }
   }
-
 }
