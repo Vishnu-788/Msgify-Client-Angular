@@ -2,7 +2,7 @@ import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
 import {LoginService} from './login-service';
-import {LoginDto} from '../../core/models/LoginDto';
+import {AuthDto} from '../../core/models/AuthDto';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class LoginComponent {
   async handleLogin(){
     if(this.loginForm.valid){ // Invalid state is handled in the UI.
       this.errorMessage.set(null)
-      const data: LoginDto = this.loginForm.value;
+      const data: AuthDto = this.loginForm.value;
       const result = await this.loginService.performLogin(data);
       if(result.success){
         await this.router.navigateByUrl('/');

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LoginDto} from '../../models/LoginDto';
+import {AuthDto} from '../../models/AuthDto';
 import {AuthSuccessDto} from '../../models/AuthSuccessDto';
 
 @Injectable({

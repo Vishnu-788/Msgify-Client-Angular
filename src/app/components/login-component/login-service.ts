@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LoginDto} from '../../core/models/LoginDto';
+import {AuthDto} from '../../core/models/AuthDto';
 import {AuthService} from '../../core/globalService/auth-service/auth-service';
 import {AuthSuccessDto} from '../../core/models/AuthSuccessDto';
 import {API_ENDPOINTS} from '../../core/constants/api-endpoints';
@@ -14,7 +14,7 @@ export class LoginService {
   constructor(authService: AuthService) {
     this.authService = authService;
   }
-  private async parseResponse(response: Response): Promise<AuthResponseDto> {
+  private parseResponse = async(response: Response): Promise<AuthResponseDto> => {
     try {
       const data = await response.json();
       if(response.ok){
@@ -33,7 +33,7 @@ export class LoginService {
       return {success: false, message: 'Error parsing information'};
     }
   }
-  performLogin = async (loginDto: LoginDto): Promise<AuthResponseDto> => {
+  performLogin = async (loginDto: AuthDto): Promise<AuthResponseDto> => {
     try {
       const response = await fetch(API_ENDPOINTS.AUTH.LOGIN, {
         method: "POST",
