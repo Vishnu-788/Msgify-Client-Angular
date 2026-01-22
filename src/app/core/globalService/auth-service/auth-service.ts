@@ -36,6 +36,14 @@ export class AuthService {
     this.stateService.resetState();
   }
 
+  public getUsername = () => {
+    return this.stateService.getUsername();
+  }
+
+  public getToken = () => {
+    return this.stateService.getToken();
+  }
+
   public isAuthenticated = (): boolean => {
     return !!this.stateService.getToken(); // !null === true, !!null === false.
   }
