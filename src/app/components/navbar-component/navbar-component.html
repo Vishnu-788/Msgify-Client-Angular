@@ -1,1 +1,24 @@
-<p>navbar-component works!</p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary rounded-bottom-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-sm-6 d-flex align-items-center">
+        <p class="mb-0 text-white fw-bolder">MSGIFY- Meet new People</p>
+      </div>
+      <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
+        <form class="d-flex justify-content-center justify-content-sm-end" role="search">
+          <div class="search-container d-flex align-items-center">
+            <i class="search-icon"></i>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+<!--            Link wont work since there is no path available yet.-->
+            <a [routerLink]="['/profile']" class="profile-icon">{{profileLetter}}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>

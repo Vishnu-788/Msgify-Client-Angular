@@ -1,0 +1,59 @@
+@use '../../scss-variables/colors';
+nav {
+  background-color: colors.$primary-light !important;
+  .row {
+    width: 100%;
+    margin: 0;
+
+
+    .search-container {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-radius: 6rem;
+      padding: 0 1rem;
+      margin: {
+        top: 1rem;
+        bottom: 1rem;
+      }
+
+      .search-icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        -webkit-mask: url('/icons/search.svg') no-repeat center;
+        mask: url('/icons/search.svg') no-repeat center; // If there is a red warning showing ignore it. The idea cannot resolve the path but js can get the files from the public folder.
+        background-color: colors.$primary-light;
+        vertical-align: middle;
+      }
+
+      input {
+        border: none;
+        height: 3rem;
+
+        &::placeholder {
+          color: colors.$primary-dark;
+        }
+
+        &:focus {
+          outline: none !important;
+          box-shadow: none !important;
+          border: none !important;
+        }
+      }
+
+      .profile-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: colors.$primary-dark;
+        color: white;
+        width: 2.5rem;
+        height: 2rem;
+        text-decoration: none;
+      }
+    }
+  }
+}
