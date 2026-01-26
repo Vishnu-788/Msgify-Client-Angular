@@ -1,0 +1,31 @@
+@use '../../scss-variables/colors';
+
+nav {
+  background-color: colors.$primary-light !important;
+  border-radius: 1px !important;
+  height: 4rem;
+
+  .back-button-icon {
+    margin-right: 1rem;
+    display: inline-block;
+    // Increase these values to your liking
+    width: 25px;
+    height: 25px;
+
+    -webkit-mask: url('/icons/arrow-left.svg') no-repeat center;
+    mask: url('/icons/arrow-left.svg') no-repeat center;
+
+    // Add this to ensure the SVG scales to the container size
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    vertical-align: middle;
+    background-color: white;
+    cursor: pointer; // Makes it feel like a button
+  }
+
+  h3 {
+    margin: 0;
+    color: white;
+  }
+}
